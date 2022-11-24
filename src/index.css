@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bg-nendo {
+  background-color: #F2F2F2;
+}
+
+.bg-nendo-dark {
+  background-color: #7E8C74;
+}
+
+.bg-nendo-light {
+  background-color: #CBD9C1;
+}
