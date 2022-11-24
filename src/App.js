@@ -1,12 +1,14 @@
 import React from "react";
 import Banners from "./components/Banners";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
+import ItemListContainer from "./components/ItemListContainer";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <div>
-      <Header />
+      <NavBar />
+      <ItemListContainer greeting={"Bienvenidos a Nendo Cerámica"} />
       <Banners />
       <Footer />
     </div>
