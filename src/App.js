@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <NavBar />
-      <ItemListContainer greeting={"Bienvenidos a Nendo Cerámica"} />
+      <ItemListContainer />
       <Banners />
       <Footer />
     </div>
