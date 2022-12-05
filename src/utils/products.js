@@ -1,8 +1,8 @@
 export const products = [
     {
         id: 1,
-        image: "../../public/images/DSC_0003.JPG",
-        product: "Bowl",
+        image: "/images/DSC_0003.JPG",
+        name: "Bowl",
         category: "Bazar",
         desc: "Bowl de mesa de color para destarcar productos",
         price: "2500",
@@ -11,8 +11,8 @@ export const products = [
     },
     {
         id: 2,
-        image: "../../public/images/DSC_00013.JPG",
-        product: "Cuenco",
+        image: "/images/DSC_0013.JPG",
+        name: "Cuenco",
         category: "Bazar",
         desc: "Cuenco para presentar comida asiatica, snacks para una picada o preparar ingredientes de una comida",
         price: "1500",
@@ -21,8 +21,8 @@ export const products = [
     },
     {
         id: 3,
-        image: "../../public/images/DSC_0008.JPG",
-        product: "Plato playo",
+        image: "/images/DSC_0008.JPG",
+        name: "Plato playo",
         category: "Bazar",
         desc: "Plato playo para presentar una picada, sushi o lo que más te guste",
         price: "2000",
@@ -31,8 +31,8 @@ export const products = [
     },
     {
         id: 4,
-        image: "../../public/images/DSC_0010.JPG",
-        product: "Ensaladera",
+        image: "/images/DSC_0010.JPG",
+        name: "Ensaladera",
         category: "Bazar",
         desc: "Ensaladera de cerámica pintada para lucir tu mesa de domingo",
         price: "3000",
@@ -41,8 +41,8 @@ export const products = [
     },
     {
         id: 5,
-        image: "../../public/images/DSC_0032.JPG",
-        product: "Mini cuenco",
+        image: "/images/DSC_0032.JPG",
+        name: "Mini cuenco",
         category: "Bazar",
         desc: "Mini cuenco para topings, salsas o aderezos",
         price: "500",
@@ -51,8 +51,8 @@ export const products = [
     },
     {
         id: 6,
-        image: "../../public/images/DSC_0088.JPG",
-        product: "Set de platos",
+        image: "/images/DSC_0088.JPG",
+        name: "Set de platos",
         category: "Bazar",
         desc: "Set de platos que incluye 1 plato playo, 1 tabla rectangular y 1 mini cuenco cuadrado",
         price: "5000",

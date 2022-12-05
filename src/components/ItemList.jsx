@@ -3,11 +3,12 @@ import Item from "./Item";
 
 const ItemList = ({ listProducts }) => {
 
-    console.log(listProducts);
 
     return (
         <div className="container bg-nendo" >
-            {listProducts.map(product => <Item />)}
+            <div className="row">
+                    {listProducts.map(product => <Item key={product.id} product={product} />)}
+            </div>
         </div>
     )
 }
