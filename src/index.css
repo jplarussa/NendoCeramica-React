@@ -23,3 +23,16 @@ code {
 .bg-nendo-light {
   background-color: #CBD9C1;
 }
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.dropdown-item.active {
+  background-color: #CBD9C1;
+  color: black;
+}
+.dropdown-menu {
+  --bs-dropdown-link-active-bg: #CBD9C1;
+}

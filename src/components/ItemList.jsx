@@ -7,7 +7,9 @@ const ItemList = ({ listProducts }) => {
     return (
         <div className="container bg-nendo" >
             <div className="row">
+                <div class="card-group">
                     {listProducts.map(product => <Item key={product.id} product={product} />)}
+                </div>
             </div>
         </div>
     )

@@ -1,23 +1,25 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Loader from "./Loader";
 import ItemDetail from "./ItemDetail";
 import { products } from "../utils/products";
 import { promise } from "../utils/promise";
-import { useState, useEffect } from "react";
-import Loader from "./Loader";
 
 const ItemDetailContainer = () => {
 
-    
     const [listItems, setListItems] = useState([])
+    const {id} = useParams();
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
     promise(products)
         .then(res => {
-        setLoading(false)
-        setListProducts(res)
+            setLoading(false)
+            setListItems(res.find(item => item.id === parseInt(id)))
         })
-    }, [])
+    }, [id]);
+
     return (
             <div className="container">
                 {
