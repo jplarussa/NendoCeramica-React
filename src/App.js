@@ -17,8 +17,8 @@ function App() {
         <Route path="/item/" element={<ItemListContainer />} />
         <Route path="/item/:id" element={<ItemDetailContainer />} />
         <Route path="*" element={<Error404 />} />
-{/*         <Route exact path="/banners" element={<Banners />} /> */}
       </Routes>
+      <Banners></Banners>
       <Footer />
     </BrowserRouter>
   );

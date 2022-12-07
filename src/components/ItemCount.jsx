@@ -9,7 +9,7 @@ import { useState } from "react";
         const subtraction = () => count > initial && setCount(count - 1);
         const agregar = () => {
             if (stock > 0) {
-                alert("Agregaste "+ count +" al carrito");
+                alert("Agregaste "+ count +" productos al carrito");
             }
         }
 
