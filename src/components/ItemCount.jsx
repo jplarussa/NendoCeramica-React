@@ -1,17 +1,30 @@
 import React from "react";
+import {Link} from "react-router-dom";
+import { useEffect } from "react";
 import { useState } from "react";
 
-    const ItemCount = ({ initial, stock }) => {
+    const ItemCount = ({ stock, onAdd }) => {
 
-        const [count, setCount] = useState(parseInt(initial));
+        const [count, setCount] = useState(1);
+        const [itemStock, setItemStock] = useState(stock);
+        const [isPurchased, setIsPurchased] = useState(false);
 
-        const addition = () => count < stock && setCount(count + 1);
-        const subtraction = () => count > initial && setCount(count - 1);
-        const agregar = () => {
-            if (stock > 0) {
-                alert("Agregaste "+ count +" productos al carrito");
+        const addition = () => count < itemStock && setCount(count + 1);
+        const subtraction = () => count > 1 && setCount(count - 1);
+
+
+        const addToCart = (quantity) => {
+            if (count <= itemStock) {
+                setCount(1);
+                setItemStock(itemStock - quantity)
+                setIsPurchased(true)
+                onAdd(quantity)
             }
-        }
+        } 
+
+        useEffect(() => {
+            setItemStock(stock);
+        }, [stock])
 
     return (
         <div className="d-flex flex-column align-items-center container mt-1">
@@ -26,7 +39,7 @@ import { useState } from "react";
             </div>
             <div className="row pt-1">
             <div className="col-md-12 align-items-center text-center">
-                    <button className="btn bg-nendo-light h-100" onClick={agregar}>Agregar</button>
+                    {isPurchased ? <Link to={"/cart"} className="btn bg-nendo-light h-100">Terminar mi compra</Link> : <button className="btn bg-nendo-light h-100" onClick={() => {addToCart(count)}}>Agregar</button>}
                 </div>
             </div>
         </div>

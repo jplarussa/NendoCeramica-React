@@ -33,7 +33,7 @@ const NavBar = () => {
                             </div>
                         </nav>
                     </div>
-                    <div className="col-md-4 d-flex justify-content-end">
+                    <div className="col-md-4 d-flex justify-content-end align-items-center">
                         <CartWidget />
                     </div>
                 </div>
