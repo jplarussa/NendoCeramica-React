@@ -1,17 +1,18 @@
-import React from "react";
-import { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ItemCount from "./ItemCount";
 import { CartContext } from "../context/CartContextProvider";
+
+
 
 const ItemDetail = ({ listItems }) => {
     const {addItem} = useContext(CartContext);
     const [itemStock, setItemStock] = useState(listItems.initial);
-
+    
     const onAdd = (quantity) => {
         setItemStock(itemStock - quantity)
         addItem(listItems, quantity); 
     }
-    
+
     useEffect(() => {
         setItemStock(listItems.stock)
     }, [listItems]);

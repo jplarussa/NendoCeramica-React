@@ -1,26 +1,29 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
-import ItemCount from "./ItemCount";
 import ItemList from "./ItemList";
-import { products } from "../utils/products";
-import { promise } from "../utils/promise";
-
+import { collection, getFirestore, getDocs, where, query } from "firebase/firestore"
 
 const ItemListContainer = () => {
 
   const [listProducts, setListProducts] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const {id} = useParams();
 
   useEffect(() => {
-    promise(id ? products.filter(item => item.category === id) : products)
-      .then(res => {
-        setLoading(false)
-        setListProducts(res)
-      })
-  }, [id])
+    const db = getFirestore();
+    const itemsCollection = collection(db, "products");
+
+    // Check if an id Param is received to filter products by category 
+    const q = id ? query(itemsCollection, where("category", "==", id)) : itemsCollection;
+    getDocs(q).then((snapShot) => {
+      if (snapShot.size === 0) {
+        console.log("No hay productos");
+      } else {
+      setListProducts(snapShot.docs.map((product) => ({id:product.id, ...product.data()})))
+      }
+    });
+  }, [id]);
 
   return (
     <div className="row mt-3">

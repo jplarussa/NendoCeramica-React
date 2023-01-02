@@ -1,24 +1,28 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
 import ItemDetail from "./ItemDetail";
-import { products } from "../utils/products";
-import { promise } from "../utils/promise";
+import { doc, getDoc, getFirestore } from "firebase/firestore"
+
 
 const ItemDetailContainer = () => {
 
     const [listItems, setListItems] = useState([])
     const {id} = useParams();
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-    promise(products)
-        .then(res => {
-            setLoading(false)
-            setListItems(res.find(item => item.id === parseInt(id)))
-        })
-    }, [id]);
+    
+        const db = getFirestore();
+        const products = doc(db, "products", id);
+        getDoc(products).then((snapshot) => {
+            if (snapshot.exists()) {
+                setListItems({id:snapshot.id, ...snapshot.data()});
+            } else {
+                console.log("No está");
+            }
+        });
+    }, []);
 
     return (
             <div className="container">
