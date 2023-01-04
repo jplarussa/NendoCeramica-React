@@ -8,6 +8,7 @@ import Cart from "./components/Cart";
 import Banners from "./components/Banners";
 import Footer from "./components/Footer";
 import Error404 from "./components/Error404";
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/item/" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Banners></Banners>
