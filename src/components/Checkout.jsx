@@ -1,6 +1,7 @@
-import { addDoc, collection, getFirestore, doc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, getFirestore, writeBatch, doc, getDoc } from "firebase/firestore";
 import React, { useContext } from "react";
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { CartContext } from "../context/CartContextProvider";
 
 const Checkout = () => {
@@ -11,7 +12,7 @@ const Checkout = () => {
     const [email, setEmail] = useState("");
     const [orderId, setOrderId] = useState("");
 
-    const generateOrder = () => {
+    const generateOrder = async () => {
         const fecha = new Date();
         const order = {
             buyer:{name:name, telephone:telephone, email:email},
@@ -24,10 +25,19 @@ const Checkout = () => {
 
         const db = getFirestore();
         const ordersCollection = collection(db, "orders");
-        addDoc(ordersCollection, order).then((snapShot) => {
+        await addDoc(ordersCollection, order).then((snapShot) => {
+            
             setOrderId(snapShot.id);
-            const generatedOrder = doc(db, "orders", snapShot.id); //Selecciono la Orden a modificar
-            updateDoc(generatedOrder, {total:order.total * 1.21}); //Actualiza la Orden Generada aplicando un 21% al valor total
+            const batch = writeBatch(db);
+            
+            cartList.forEach(item => {
+                const producto = doc(db, "products", item.id);
+                getDoc(producto).then((product) => {
+                    batch.update(producto, {stock: product.data().stock - item.qty});
+                });
+            });
+            batch.commit();
+
             clear();
         });
 
@@ -38,15 +48,15 @@ const Checkout = () => {
                 <div className="col-md-6">
                     <form>
                         <div className="mb-3">
-                            <label for="name" className="form-label">Nombre:</label>
+                            <label htmlFor="name" className="form-label">Nombre:</label>
                             <input type="text" className="form-control" placeholder="Ingrese su Nombre" onInput={(e) => {setName(e.target.value)}} />
                         </div>
                         <div className="mb-3">
-                            <label for="telephone" className="form-label">Teléfono:</label>
+                            <label htmlFor="telephone" className="form-label">Teléfono:</label>
                             <input type="number" className="form-control" id="telephone" placeholder="Ingrese su Teléfono" onInput={(e) => {setTelephone(e.target.value)}} />
                         </div>
                         <div className="mb-3">
-                            <label for="email" className="form-label">Email</label>
+                            <label htmlFor="email" className="form-label">Email</label>
                             <input type="text" className="form-control" id="email" placeholder="Ingrese su Email" onInput={(e) => {setEmail(e.target.value)}} />
                         </div>
                         <button type="button" className="btn bg-nendo-light" onClick={generateOrder}>Generar Orden</button>
@@ -76,7 +86,7 @@ const Checkout = () => {
             </div>
             <div className="row">
                 <div className="col text-center">
-                    {orderId !== "" ? <div className="bg-nendo-light p-4 mb-3" role="alert">La Orden generada es: <b>{orderId}</b></div> : ""}
+                    {orderId !== "" ? <Navigate to={"/thanks/"+ orderId} /> : ""}
                 </div>
             </div>
         </div>

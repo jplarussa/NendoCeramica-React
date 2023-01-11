@@ -5,8 +5,8 @@ export const products = [
         name: "Bowl",
         category: "recipientes",
         desc: "Bowl de mesa de color para destarcar productos",
-        price: "2500",
-        stock: "5"
+        price: 2500,
+        stock: 5
     },
     {
         id: 2,
@@ -14,8 +14,8 @@ export const products = [
         name: "Cuenco",
         category: "cuencos",
         desc: "Cuenco para presentar comida asiatica, snacks para una picada o preparar ingredientes de una comida",
-        price: "1500",
-        stock: "20"
+        price: 1500,
+        stock: 20
     },
     {
         id: 3,
@@ -23,8 +23,8 @@ export const products = [
         name: "Plato playo",
         category: "platos",
         desc: "Plato playo para presentar una picada, sushi o lo que más te guste",
-        price: "2000",
-        stock: "10"
+        price: 2000,
+        stock: 10
     },
     {
         id: 4,
@@ -32,8 +32,8 @@ export const products = [
         name: "Ensaladera",
         category: "recipientes",
         desc: "Ensaladera de cerámica pintada para lucir tu mesa de domingo",
-        price: "3000",
-        stock: "4"
+        price: 3000,
+        stock: 4
     },
     {
         id: 5,
@@ -41,8 +41,8 @@ export const products = [
         name: "Mini cuenco",
         category: "cuencos",
         desc: "Mini cuenco para topings, salsas o aderezos",
-        price: "500",
-        stock: "25"
+        price: 500,
+        stock: 25
     },
     {
         id: 6,
@@ -50,7 +50,7 @@ export const products = [
         name: "Set de platos",
         category: "platos",
         desc: "Set de platos que incluye 1 plato playo, 1 tabla rectangular y 1 mini cuenco cuadrado",
-        price: "5000",
-        stock: "6"
+        price: 5000,
+        stock: 6
     },
 ];

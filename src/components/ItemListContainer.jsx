@@ -7,8 +7,9 @@ import { collection, getFirestore, getDocs, where, query } from "firebase/firest
 const ItemListContainer = () => {
 
   const [listProducts, setListProducts] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const {id} = useParams();
+
 
   useEffect(() => {
     const db = getFirestore();
@@ -19,8 +20,10 @@ const ItemListContainer = () => {
     getDocs(q).then((snapShot) => {
       if (snapShot.size === 0) {
         console.log("No hay productos");
+        setLoading(false);
       } else {
-      setListProducts(snapShot.docs.map((product) => ({id:product.id, ...product.data()})))
+        setListProducts(snapShot.docs.map((product) => ({id:product.id, ...product.data()})))
+        setLoading(false);
       }
     });
   }, [id]);

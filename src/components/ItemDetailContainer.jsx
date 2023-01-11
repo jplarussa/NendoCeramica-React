@@ -9,7 +9,7 @@ const ItemDetailContainer = () => {
 
     const [listItems, setListItems] = useState([])
     const {id} = useParams();
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
     
@@ -18,11 +18,13 @@ const ItemDetailContainer = () => {
         getDoc(products).then((snapshot) => {
             if (snapshot.exists()) {
                 setListItems({id:snapshot.id, ...snapshot.data()});
+                setLoading(false);
             } else {
                 console.log("No está");
+                setLoading(false);
             }
         });
-    }, []);
+    }, [id]);
 
     return (
             <div className="container">
