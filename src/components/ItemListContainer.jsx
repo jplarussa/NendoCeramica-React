@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
 import ItemList from "./ItemList";
+import Banners from "./Banners";
 import { collection, getFirestore, getDocs, where, query } from "firebase/firestore"
 
 const ItemListContainer = () => {
@@ -29,16 +30,23 @@ const ItemListContainer = () => {
   }, [id]);
 
   return (
-    <div className="row mt-3">
-      <div className="col-md-12">
-        {
-          loading
-          ?
-          <Loader />
-          :
-          <ItemList listProducts={listProducts} />
-        }
+    <div>
+      <div className="row mt-3">
+        <div className="col-md-12">
+          {
+            loading
+            ?
+            <Loader />
+            :
+            <ItemList listProducts={listProducts} />
+          }
+        </div>
       </div>
+      <div className="row mt-3">
+        <div className="col-md-12">
+          <Banners />
+        </div>
+      </div>  
     </div>
   );
 };

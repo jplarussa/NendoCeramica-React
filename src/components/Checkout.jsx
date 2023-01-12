@@ -10,9 +10,31 @@ const Checkout = () => {
     const [name, setName] = useState("");
     const [telephone, setTelephone] = useState("");
     const [email, setEmail] = useState("");
+    const [emailConfirm, setEmailConfirm] = useState("");
     const [orderId, setOrderId] = useState("");
 
+    function isValidEmail(mail) {
+        const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        return re.test(mail);
+    }
+
+    const validate = (e) => {
+        e.preventDefault()
+        if (!name || !telephone || !email) {
+            console.log("Debes completar todos los datos");
+        } else if (email !== emailConfirm) {
+            console.log("El email no coincide, revisar por favor.");
+        } else if (!isValidEmail(email)) {
+            console.log("El email no es valido");
+        } else {
+            console.log("Los datos son validos");
+            generateOrder();
+        }
+    }
+
     const generateOrder = async () => {
+
+
         const fecha = new Date();
         const order = {
             buyer:{name:name, telephone:telephone, email:email},
@@ -42,6 +64,7 @@ const Checkout = () => {
         });
 
     }
+
     return (
         <div className="container">
             <div className="row my-5">
@@ -49,17 +72,21 @@ const Checkout = () => {
                     <form>
                         <div className="mb-3">
                             <label htmlFor="name" className="form-label">Nombre:</label>
-                            <input type="text" className="form-control" placeholder="Ingrese su Nombre" onInput={(e) => {setName(e.target.value)}} />
+                            <input type="text" className="form-control" value={name} placeholder="Ingrese su Nombre" onInput={(e) => {setName(e.target.value)}} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="telephone" className="form-label">Teléfono:</label>
-                            <input type="number" className="form-control" id="telephone" placeholder="Ingrese su Teléfono" onInput={(e) => {setTelephone(e.target.value)}} />
+                            <input type="number" className="form-control" value={telephone} id="telephone" placeholder="Ingrese su Teléfono" onInput={(e) => {setTelephone(e.target.value)}} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">Email</label>
-                            <input type="text" className="form-control" id="email" placeholder="Ingrese su Email" onInput={(e) => {setEmail(e.target.value)}} />
+                            <input type="email" className="form-control" value={email} id="email" placeholder="Ingrese su Email" onInput={(e) => {setEmail(e.target.value)}} />
                         </div>
-                        <button type="button" className="btn bg-nendo-light" onClick={generateOrder}>Generar Orden</button>
+                        <div className="mb-3">
+                            <label htmlFor="confirmMail" className="form-label">Confirma tu Email</label>
+                            <input type="email" className="form-control" value={emailConfirm} id="confirmEmail" placeholder="Ingrese de nuevo su Email" onInput={(e) => {setEmailConfirm(e.target.value)}} />
+                        </div>
+                        <button type="button" className="btn bg-nendo-light" onClick={validate}>Generar Orden</button>
                     </form>
                 </div>
                 <div className="col-md-6">

@@ -20,7 +20,7 @@ const ItemDetailContainer = () => {
                 setListItems({id:snapshot.id, ...snapshot.data()});
                 setLoading(false);
             } else {
-                console.log("No está");
+                setListItems(false);
                 setLoading(false);
             }
         });

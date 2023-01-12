@@ -5,7 +5,6 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import CartContextProvider from "./context/CartContextProvider";
 import Cart from "./components/Cart";
-import Banners from "./components/Banners";
 import Footer from "./components/Footer";
 import Error404 from "./components/Error404";
 import Checkout from "./components/Checkout";
@@ -26,7 +25,6 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
-        <Banners></Banners>
         <Footer />
       </BrowserRouter>
     </CartContextProvider>
