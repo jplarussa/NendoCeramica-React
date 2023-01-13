@@ -5,8 +5,8 @@
 ## Proyecto Final ReactJS para CoderHouse: Nendo Ceramica 
 
 `Proyecto Final` para el curso de ReactJS de la academia `Coder House` (2022).
-Es un ecommerce SPA en ReactJS con la funcionalidad básica funcional (Purchase flow).
-La aplicación permite conectarse con un backend realizado con `Firebase` para cargar productos y almacenar ordenes generadas.
+Es una `App SPA desarrolada en ReactJS` con la funcionalidad básica completa (navegación, rutas, flujo de compra y ordenes).
+La aplicación permite conectarse con una DB utilizando los servicios de `Firebase` para cargar productos y almacenar ordenes generadas.
 Validación básica de formulario.
 Uso de Context, Hooks useState, useEffect y useParams.
 .
