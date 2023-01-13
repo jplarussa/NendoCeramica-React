@@ -5,10 +5,10 @@ import CartWidget from "./CartWidget";
 const NavBar = () => {
     return (
 
-            <div className="container bg-nendo" >
-                <div className="row">
-                    <div className="col-md-8">
-                        <nav className="navbar navbar-expand-lg bg-nendo">
+            <div className="container bg-nendo-mid" >
+                <div className="row bg-nendo-mid">
+                    <div className="col-md-8 bg-nendo-mid">
+                        <nav className="navbar navbar-expand-lg bg-nendo-mid">
                             <div className="container-fluid">
                                 <NavLink className="navbar-brand" to="/"><img src="/images/Logo-3.png" alt="Nendo" width="100"/></NavLink>
                                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

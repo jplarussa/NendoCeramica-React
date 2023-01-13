@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <div className="container bg-nendo" >
+        <div className="container bg-nendo-mid mt-3" >
             <div className="row p-4 align-items-center">
-                <div className="col-md-8 ps-5">
+                <div className="col-md-8 ps-5 d-flex align-items-center">
                     <Link to="/"><img src="/images/Logo-3.png" alt="Nendo" width="60"/></Link>
+                    <span className="ps-4 fw-bold">Nendo Cerámica</span>
                 </div>
                 <div className="col-md-4">
                     <div className="d-flex justify-content-center">

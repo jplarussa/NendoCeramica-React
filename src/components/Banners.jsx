@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Banners = () => {
     return (
-    <div className="container bg-nendo pb-2">
-        <div className="row gx-3 mb-5 pt-4 justify-content-evenly">
+    <div className="container bg-nendo-mid pb-2">
+        <div className="row gx-3 py-4 justify-content-evenly">
             <div className="col-md-4 bg-nendo-green text-center shadow p-3 rounded">
                 <div className="d-flex flex-column h-100">
                 <p><img src="/images/DSC_0029.jpg" alt="Bowls" className="img-fluid" /></p>
