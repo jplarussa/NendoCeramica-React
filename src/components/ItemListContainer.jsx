@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import Loader from "./Loader";
 import ItemList from "./ItemList";
 import Banners from "./Banners";
-import { collection, getFirestore, getDocs, where, query } from "firebase/firestore"
+import { collection, getFirestore, getDocs, where, query } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 const ItemListContainer = () => {
 
@@ -20,7 +21,12 @@ const ItemListContainer = () => {
     const q = id ? query(itemsCollection, where("category", "==", id)) : itemsCollection;
     getDocs(q).then((snapShot) => {
       if (snapShot.size === 0) {
-        console.log("No hay productos");
+        Swal.fire ({
+          title: `No hay productos`,
+          icon: `info`,
+          showConfirmButton: false,
+          timer: 1500
+      });
         setLoading(false);
       } else {
         setListProducts(snapShot.docs.map((product) => ({id:product.id, ...product.data()})))

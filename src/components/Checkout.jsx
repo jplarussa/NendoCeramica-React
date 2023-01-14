@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { CartContext } from "../context/CartContextProvider";
+import Swal from "sweetalert2";
 
 const Checkout = () => {
 
@@ -21,13 +22,33 @@ const Checkout = () => {
     const validate = (e) => {
         e.preventDefault()
         if (!name || !telephone || !email) {
-            console.log("Debes completar todos los datos");
+            Swal.fire ({
+                title: `Debes completar todos los datos.`,
+                icon: `error`,
+                showConfirmButton: false,
+                timer: 1500
+            });
         } else if (email !== emailConfirm) {
-            console.log("El email no coincide, revisar por favor.");
+            Swal.fire ({
+                title: `El email no coincide, revisar por favor.`,
+                icon: `error`,
+                showConfirmButton: false,
+                timer: 1500
+            });
         } else if (!isValidEmail(email)) {
-            console.log("El email no es valido");
+            Swal.fire ({
+                title: `El email no es valido`,
+                icon: `error`,
+                showConfirmButton: false,
+                timer: 1500
+            });
         } else {
-            console.log("Los datos son validos");
+            Swal.fire ({
+                title: `Los datos son válidos`,
+                icon: `success`,
+                showConfirmButton: false,
+                timer: 1500
+            });
             generateOrder();
         }
     }

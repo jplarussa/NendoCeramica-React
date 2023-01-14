@@ -1,12 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Error404 = () => {
     return (
-        <div className="container bg-nendo min-vh-100" >
-            <div className="row px-3 pt-4 d-flex justify-content-center">
-                <div className="col-md-8 alert alert-danger w-100 text-center">
-                    <h1>ERROR 404!</h1>
-                    <h3>Página no encontrada, vuelva al inicio.</h3>
+        <div className="container">
+            <div className="row my-5">
+                <div className="col text-center">
+                    <div className="alert bg-nendo-light" role="alert">
+                        <h1 className="mb-3">ERROR 404!</h1>
+                        <p>Página no encontrada, vuelva al inicio.</p>
+                    </div>
+                    <Link to={"/"} className="btn bg-nendo-light">Volver a la Página Principal</Link>
                 </div>
             </div>
         </div>

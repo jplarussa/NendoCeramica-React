@@ -52,9 +52,13 @@ code {
   background-color: #F2F2F2;
 }
 
+.btn-cart:hover {
+  background-color: #7E8C74;
+}
+
 .wrapper {
-  width: 400px;
-  height: 500px;
+  width: 320px;
+  height: 400px;
   background: white;
   margin: auto;
   position: relative;
@@ -75,11 +79,10 @@ code {
 }
 
 .bottom{
-  width: 200%;
+  width: 100%;
   height: 20%;
-  transition: transform 0.5s;
 }
-
+/* 
 .left {
   height:100%;
   width: 50%;
@@ -89,9 +92,8 @@ code {
 }
 
 .left .details{
-  padding: 20px;
+  padding: 5px 10px 5px 20px;
   float: left;
-  width: calc(70% - 40px);
 }
 
 .left .buy{
@@ -102,7 +104,7 @@ code {
   transition: background 0.5s;
   border-left:solid thin rgba(0,0,0,0.1);
 }
-
+ */
 
 
 

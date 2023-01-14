@@ -20,15 +20,16 @@ Uso de Context, Hooks useState, useEffect y useParams.
 ## S P A - Ecommerce para productos de cerámica y porcelanas
 
 - Tecnologías utilizadas: 
-    - `CRA`.
     - `ReactJS`
     - `React Context`
     - `React Hooks`
     - `Firestore for Database.`
 
 ## Framework Dependencies
-- `React router Dom para las rutas`
+- `React router Dom para el manejo de rutas`
 - `Firebase para Base de datos`
+- `SweetAlert para hacer notificaciones con estilo al usuario`
+
 
 ## Deployment 
 
