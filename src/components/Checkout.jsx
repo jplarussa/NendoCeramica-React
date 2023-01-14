@@ -54,7 +54,56 @@ const Checkout = () => {
     }
 
     const generateOrder = async () => {
+        const db = getFirestore();
+        const orderItems = [];
+        const batch = writeBatch(db);
+    
+        // Get current stock levels for each item in the cart
+        for (let item of cartList) {
+            const itemRef = doc(db, "products", item.id);
+            const itemDoc = await getDoc(itemRef);
+            if (!itemDoc.exists) {
+                Swal.fire({
+                    title: `No existe ese item`,
+                    icon: `error`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                return;
+            }
+            let stock = itemDoc.data().stock;
+            if (stock < item.qty) {
+                Swal.fire({
+                    title: `No hay stock suficiente para: ${item.name}`,
+                    icon: `error`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                return;
+            }
+            //update stock
+            orderItems.push({ id: item.id, title: item.name, quantity: item.qty, price: item.price, subtotal: item.qty * item.price });
+            batch.update(itemRef, { stock: stock - item.qty });
+        }
+        // Execute batch update
+        batch.commit();
+        //create order
+        const fecha = new Date();
+        const order = {
+            buyer: { name: name, telephone: telephone, email: email },
+            items: orderItems,
+            total: sumTotal(),
+            order_date: `${fecha.getFullYear()}-${fecha.getMonth() + 1}-${fecha.getDate()} ${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`
+        }
+    
+        const ordersCollection = collection(db, "orders");
+        await addDoc(ordersCollection, order).then((snapShot) => {
+            setOrderId(snapShot.id);
+            clear();
+        });
+    }
 
+/*     const generateOrder = async () => {
 
         const fecha = new Date();
         const order = {
@@ -84,7 +133,7 @@ const Checkout = () => {
             clear();
         });
 
-    }
+    } */
 
     return (
         <div className="container">

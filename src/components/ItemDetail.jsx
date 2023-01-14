@@ -2,21 +2,31 @@ import React, { useEffect, useState, useContext } from "react";
 import ItemCount from "./ItemCount";
 import { CartContext } from "../context/CartContextProvider";
 import { Link } from "react-router-dom"
+import Swal from "sweetalert2";
 
 
 
 const ItemDetail = ({ listItems }) => {
     const {addItem} = useContext(CartContext);
-    const [itemStock, setItemStock] = useState(listItems.initial);
+    const [itemStock, setItemStock] = useState(listItems.stock);
     
     const onAdd = (quantity) => {
-        setItemStock(itemStock - quantity)
-        addItem(listItems, quantity); 
+            setItemStock(itemStock - quantity)
+            addItem(listItems, quantity);
     }
 
     useEffect(() => {
         setItemStock(listItems.stock)
     }, [listItems]);
+
+    if (itemStock === 0) {
+        Swal.fire({
+            title: "Producto sin stock",
+            icon: `info`,
+            showConfirmButton: false,
+            timer: 1500
+        });
+} 
 
     return (
         <div>
@@ -32,7 +42,7 @@ const ItemDetail = ({ listItems }) => {
                     <h1>{listItems.name}</h1>
                     <p className="fs-6 text">{listItems.desc}</p>
                     <p><b>${listItems.price}</b></p>
-                    <ItemCount stock={listItems.stock} onAdd={onAdd} />
+                    {itemStock !==0 ? <ItemCount stock={listItems.stock} onAdd={onAdd}/> : <h6 className="alert alert-danger p-1 w-50 text-center">Sin Stock</h6> } 
                 </div>
             </div>
             :

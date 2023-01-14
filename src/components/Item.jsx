@@ -18,14 +18,14 @@ const Item = ({ product }) => {
                         obackgroundSize: "100%",
                         backgroundSize: "cover"
                         }}></div>
-                        </Link>
-                        <div className="d-flex bottom align-items-center justify-content-between">
+                        </Link> 
+                        <div className="d-flex w-100 bottom align-items-center justify-content-between">
                             <div className="ps-3 w-75">
                                 <h4>{name}</h4>
                                 <h5>${price}</h5>
                             </div>
-                            <div className="p-1 w-25 bg-nendo-light">
-                                <Link to={"/item/"+ id}><button type="button" className="bg-nendo-light p-0 border-0"><img src="/images/addBasket.svg" alt="Add to basket" width="60"/></button></Link>
+                            <div className="btn-cart h-100 p-1 w-25 bg-nendo-light d-flex align-items-center justify-content-center">
+                                <Link to={"/item/"+ id}><button type="button" className="btn-cart bg-nendo-light p-0 border-0"><img className="p-2" src="/images/addBasket.svg" alt="Add to basket" width="75"/></button></Link>
                             </div>
                         </div>
                 </div>

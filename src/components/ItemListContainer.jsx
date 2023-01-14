@@ -34,6 +34,7 @@ const ItemListContainer = () => {
       }
     });
   }, [id]);
+  
 
   return (
     <div>

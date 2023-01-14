@@ -3,13 +3,12 @@ import {Link} from "react-router-dom";
 
     const ItemCount = ({ stock, onAdd }) => {
 
-        const [count, setCount] = useState(1);
+        const [count, setCount] = useState(stock>0 ? 1 : stock);
         const [itemStock, setItemStock] = useState(stock);
         const [isPurchased, setIsPurchased] = useState(false);
 
         const addition = () => count < itemStock && setCount(count + 1);
         const subtraction = () => count > 1 && setCount(count - 1);
-
 
         const addToCart = (quantity) => {
             if (count <= itemStock) {
