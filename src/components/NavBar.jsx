@@ -26,7 +26,6 @@ const NavBar = () => {
                                                 <li><NavLink className="dropdown-item" activeclassname="page" to="/category/platos">Platos</NavLink></li>
                                             </ul>
                                         </li>
-                                        <NavLink className="nav-link" activeclassname="page" to="/sobremi">Sobre Mi</NavLink>
                                         <NavLink className="nav-link" activeclassname="page" to="/contacto">Contacto</NavLink>
                                     </ul>
                                 </div>

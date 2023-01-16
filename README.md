@@ -9,6 +9,7 @@ Es una `App SPA desarrolada en ReactJS` con la funcionalidad básica completa (n
 La aplicación permite conectarse con una DB utilizando los servicios de `Firebase` para cargar productos y almacenar ordenes generadas.
 Validación básica de formulario.
 Uso de Context, Hooks useState, useEffect y useParams.
+Control de stock via Firebase, renovación de stock para item sin stock al cargar el homepage.
 .
 
 ## Demo

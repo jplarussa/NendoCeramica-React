@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Item = ({ product }) => {
     const { id, name, image, price } = product;
     return (
-        <div className="col-md-6 p-3 ">
+        <div className="col-md-6 p-3 col-xl-4">
             <div className="wrapper">
                 <div className="containerN">
                         <Link to={"/item/"+ id}><div className="top" style={{

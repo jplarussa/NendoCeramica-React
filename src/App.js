@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Error404 from "./components/Error404";
 import Checkout from "./components/Checkout";
 import Thanks from "./components/Thanks";
+import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/thanks/:id" element={<Thanks />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/contacto" element={<Contact  />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
