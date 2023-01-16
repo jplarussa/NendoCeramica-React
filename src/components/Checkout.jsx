@@ -103,38 +103,6 @@ const Checkout = () => {
         });
     }
 
-/*     const generateOrder = async () => {
-
-        const fecha = new Date();
-        const order = {
-            buyer:{name:name, telephone:telephone, email:email},
-            items: cartList.map(item => (
-                {id:item.id, title:item.name, quantity:item.qty, price:item.price, subtotal:item.qty * item.price}
-            )),
-            total:sumTotal(),
-            order_date: `${fecha.getFullYear()}-${fecha.getMonth() + 1}-${fecha.getDate()} ${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`
-        }
-
-        const db = getFirestore();
-        const ordersCollection = collection(db, "orders");
-        await addDoc(ordersCollection, order).then((snapShot) => {
-            
-            setOrderId(snapShot.id);
-            const batch = writeBatch(db);
-            
-            cartList.forEach(item => {
-                const producto = doc(db, "products", item.id);
-                getDoc(producto).then((product) => {
-                    batch.update(producto, {stock: product.data().stock - item.qty});
-                });
-            });
-            batch.commit();
-
-            clear();
-        });
-
-    } */
-
     return (
         <div className="container">
             <div className="row my-5">
