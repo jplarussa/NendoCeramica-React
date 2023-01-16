@@ -1,6 +1,19 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
 
 const Contact = () => {
+    
+    const submitEmail = () => {
+        Swal.fire ({
+            title: `Debes completar todos los datos.`,
+            icon: `error`,
+            showConfirmButton: false,
+            timer: 1500
+        });
+        <Navigate to="/" />
+    }
+
+
     return (
         <div className="row mt-3">
             <div className="col-md-12">
@@ -28,7 +41,7 @@ const Contact = () => {
                                 <textarea className="form-control" id="mensaje" rows="3"></textarea>
                             </div>
                             <div className="mb-3 text-center mt-5">
-                                <button type="submit" className="btn bg-nendo-light btn-md" name="submit">Enviar</button>
+                                <button type="submit" className="btn bg-nendo-light btn-md" onClick={submitEmail} name="submit">Enviar</button>
                             </div>
                         </form>
                     </div>
