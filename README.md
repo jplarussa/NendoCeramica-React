@@ -14,7 +14,7 @@ Control de stock via Firebase, renovación de stock para item sin stock al carga
 
 ## Demo
 
-[Demo](https://www.google.com.ar)
+[https://nendoceramica.netlify.app/](https://nendoceramica.netlify.app/)
 
 
 
