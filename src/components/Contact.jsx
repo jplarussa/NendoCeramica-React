@@ -6,8 +6,8 @@ const Contact = () => {
     
     const submitEmail = () => {
         Swal.fire ({
-            title: `Debes completar todos los datos.`,
-            icon: `error`,
+            title: `Gracias por contactarnos.`,
+            icon: `success`,
             showConfirmButton: false,
             timer: 1500
         });
